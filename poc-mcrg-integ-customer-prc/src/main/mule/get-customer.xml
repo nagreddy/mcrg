@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:apikit="http://www.mulesoft.org/schema/mule/mule-apikit" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/mule-apikit http://www.mulesoft.org/schema/mule/mule-apikit/current/mule-apikit.xsd 
-http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+<mule xmlns:ftp="http://www.mulesoft.org/schema/mule/ftp" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:apikit="http://www.mulesoft.org/schema/mule/mule-apikit" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/mule-apikit http://www.mulesoft.org/schema/mule/mule-apikit/current/mule-apikit.xsd 
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/ftp http://www.mulesoft.org/schema/mule/ftp/current/mule-ftp.xsd">
+	<ftp:config name="ftp-read-file" doc:name="FTP Config" doc:id="de06f365-5194-4762-b4bf-ee75341fb07b" >
+		<ftp:connection host="localhost" workingDir="/users/files"/>
+	</ftp:config>
 	<flow name="get-customer-flow" doc:id="ac83bd22-6cc4-4c53-94ce-e37854889947" >
-		<ee:transform doc:name="DW to CustomerId" doc:id="cb17e123-fd5a-45f6-b5f7-05681d7b972f">
-			<ee:variables>
-				<ee:set-variable variableName="customerId"><![CDATA[%dw 2.0
+		<ee:transform doc:name="DW to CustomerId" doc:id="3fd9279c-0d66-4847-a4e9-291e493cd47b" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
 output application/json
 ---
-attributes.uriParams.customerId]]></ee:set-variable>
-			</ee:variables>
+attributes.uriParams.customerId]]></ee:set-payload>
+			</ee:message>
 		</ee:transform>
-		<ee:transform doc:name="DW to Get Customer" doc:id="f09463e6-04a0-49f4-8edb-ea242ea4eaa5">
+		<ee:transform doc:name="DW to Get Customer" doc:id="933c75fb-af0f-47f6-beb6-5f4007820a2f">
 			<ee:message>
 				<ee:set-payload><![CDATA[%dw 2.0
 output application/json
