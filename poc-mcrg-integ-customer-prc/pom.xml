@@ -3,11 +3,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.mycompany</groupId>
-	<artifactId>poc-mcrg-integ-customer-prc2</artifactId>
+	<artifactId>poc-mcrg-integ-customer-prc</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>mule-application</packaging>
 
-	<name>poc-mcrg-integ-customer-prc2</name>
+	<name>poc-mcrg-integ-customer-prc</name>
 
     <properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
