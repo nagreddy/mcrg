@@ -2,15 +2,18 @@
 
 <mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:apikit="http://www.mulesoft.org/schema/mule/mule-apikit" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/mule-apikit http://www.mulesoft.org/schema/mule/mule-apikit/current/mule-apikit.xsd 
 http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
-    <flow name="get:\customers\(customerId):api-config">
-		<ee:transform doc:name="DW to CustomerId" doc:id="9acd1e31-595e-48f6-bc6d-e071a81ba48d" >
-			<ee:variables >
-				<ee:set-variable variableName="customerId" ><![CDATA[attributes.uriParams.customerId]]></ee:set-variable>
+	<flow name="get-customer-flow" doc:id="ac83bd22-6cc4-4c53-94ce-e37854889947" >
+		<ee:transform doc:name="DW to CustomerId" doc:id="cb17e123-fd5a-45f6-b5f7-05681d7b972f">
+			<ee:variables>
+				<ee:set-variable variableName="customerId"><![CDATA[%dw 2.0
+output application/json
+---
+attributes.uriParams.customerId]]></ee:set-variable>
 			</ee:variables>
 		</ee:transform>
-		<ee:transform doc:name="DW to Get Customer" doc:id="171d076a-35df-4917-8fe5-0c98b7ba5752" >
-			<ee:message >
-				<ee:set-payload ><![CDATA[%dw 2.0
+		<ee:transform doc:name="DW to Get Customer" doc:id="f09463e6-04a0-49f4-8edb-ea242ea4eaa5">
+			<ee:message>
+				<ee:set-payload><![CDATA[%dw 2.0
 output application/json
 ---
 {
@@ -41,6 +44,6 @@ output application/json
 }]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
-		<logger level="INFO" doc:name="LOG End Message" doc:id="8a105361-09f2-4cad-af86-515ac765fcfd" message="get Customer flow- END" />
-    </flow>
+		<logger level="INFO" doc:name="LOG End Message" doc:id="31fd6203-6083-4917-9d12-d3a82181c59b" message="get Customer flow- END" />
+	</flow>
 </mule>
