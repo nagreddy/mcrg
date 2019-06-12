@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>bcdaf1bd-72b9-402e-bab1-9a8a7ffbd3d1</groupId>
+	<groupId>com.mrcg.api</groupId>
 	<artifactId>poc-mcrg-integ-customer-prc</artifactId>
     <version>1.0.1</version>
     <packaging>mule-application</packaging>
